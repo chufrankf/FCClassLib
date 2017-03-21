@@ -42,7 +42,10 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Constants.cs" />
+    <Compile Include="FCCoreHelpers.cs" />
+    <Compile Include="FCHttpHelper.cs" />
     <Compile Include="FCUriHelper.cs" />
+    <Compile Include="Google\GooglePlacesHeader.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

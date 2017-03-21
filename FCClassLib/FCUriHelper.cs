@@ -8,41 +8,18 @@ using System.Collections.Specialized;
 
 namespace FCClassLib
 {
-    class FCUriHelper
+    public class FCUriHelper : UriBuilder
     {
-        private UriBuilder uriBuilder;
-        private NameValueCollection parameters;
+        public FCUriHelper(string uri) : base(uri){ }
 
-        public FCUriHelper()
+        #region Methods
+        public void SetParameters(Dictionary<string,string> prmts)
         {
-            uriBuilder = new UriBuilder();
-            parameters = HttpUtility.ParseQueryString(String.Empty);
-        }
-
-        public FCUriHelper(string uri)
-        {
-            uriBuilder = new UriBuilder(uri);
-            parameters = HttpUtility.ParseQueryString(String.Empty);
-        }
-
-        public FCUriHelper(string scheme, string host, int port, string pathValue)
-        {
-            uriBuilder = new UriBuilder(scheme, host, port, pathValue);
-            parameters = HttpUtility.ParseQueryString(String.Empty);
-        }
-
-        public void AddParameters(string key, string value)
-        {
-            parameters.Add(key, value);
-        }
-
-        public Uri GetUri()
-        {
-            if (parameters.Count > 0)
+            if(prmts != null)
             {
-                uriBuilder.Query = parameters.ToString();
+                this.Query = prmts.ToQueryString();
             }
-            return uriBuilder.Uri;
         }
+        #endregion
     }
 }
